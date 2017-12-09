@@ -68,7 +68,7 @@ class Home extends React.Component {
   render() {
     return (
     <div>
-      <UserModal show={this.props.userDetails} onHide={this.hideDetails} initialValues={this.props.initialValues}/>
+      <UserModal show={this.props.userDetails} onHide={this.hideDetails} initialvalues={this.props.initialValues}/>
       <UserForm disableButton={this.props.userDetails} initialValues={this.props.initialValues} onSubmit={this.submit} />
     </div>
     );

@@ -4,7 +4,7 @@ import React from 'react';
 class Input extends React.Component{
 
   componentDidUpdate(prevProps) {
-    if (prevProps.meta.error !=this.props.meta.error ) {
+    if (prevProps.meta.error !==this.props.meta.error ) {
         this.input.focus();
     }
 }
@@ -14,7 +14,7 @@ class Input extends React.Component{
   }
 
     render(){
-const {type, label, input, meta:{touched,error,dirty,active,visited}} = this.props
+const {type, label, input, meta:{error}} = this.props
 return(
     <div>
     <label>{label}</label>
