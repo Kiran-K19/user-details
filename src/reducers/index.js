@@ -1,6 +1,17 @@
 import { combineReducers} from 'redux';
 import {reducer as formReducer } from 'redux-form';
 
+const userDetails = (state=false,action)=>{
+    switch(action.type){
+        case 'SHOW_DETAILS':       
+           return true
+        case 'HIDE_DETAILS':
+            return false
+        default:
+        return state;
+    }
+}
+
 const initialValues = (state={},action)=>{
     switch(action.type){
         case 'UPDATE_INITIAL':       
@@ -22,6 +33,7 @@ const user = (state=[],action)=>{
 }
 
 const rootReducer = combineReducers({
+    userDetails,
     initialValues,
     user,
     form: formReducer,

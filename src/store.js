@@ -2,13 +2,14 @@ import { createStore} from 'redux';
 import rootReducer from './reducers/index';
 
 const INITIAL_STATE = {
-initialValues:{
-    name:"John Doe",
-   email:"example@example.com",
-   mobile:4000000000
-},
-user:[],
-form:{}
+    userDetails: false,
+    initialValues: {
+        name: "John Doe",
+        email: "example@example.com",
+        mobile: "4000000000"
+    },
+    user: [],
+    form: {}
 }
 
 const store = createStore(rootReducer,INITIAL_STATE);

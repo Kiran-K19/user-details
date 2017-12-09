@@ -3,6 +3,12 @@ import React from 'react';
 
 class Input extends React.Component{
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.meta.error !=this.props.meta.error ) {
+        this.input.focus();
+    }
+}
+
   handleKeyPress=(value)=>{
     console.log(value);
   }
@@ -10,11 +16,11 @@ class Input extends React.Component{
     render(){
 const {type, label, input, meta:{touched,error,dirty,active,visited}} = this.props
 return(
-    <div className="input-row">
+    <div>
     <label>{label}</label>
-      <input {...input} type={type} required/>
+      <input {...input} type={type}  ref={input => (this.input = input)}/>
       {error &&
-       <span className="error">{error}</span>}
+       <div className="alert alert-warning" role="alert">{error}</div>}
     </div>
   );
 }

@@ -4,13 +4,16 @@ import store from '../store';
 import {connect} from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import { SubmissionError } from 'redux-form'
+import UserModal from './UserModal';
 
 function mapStateToProps(state){
   return{
       initialValues:state.initialValues,
-      users:state.user
+      users:state.user,
+      userDetails:state.userDetails
   }
 }
+
 
 
 class Home extends React.Component {
@@ -22,6 +25,7 @@ class Home extends React.Component {
     if(this.props.users.length===0){
       this.props.submitForm(values);
       this.props.updateInitial(values);
+      this.props.showDetails();
       console.log(store.getState());
     }
 
@@ -33,7 +37,7 @@ class Home extends React.Component {
           containsError=true;
           throw new SubmissionError({
             email: 'Email already Registered',
-            _error: 'Registration Failed!'
+            _error: 'Oh snap! Change a few things up and try submitting again.!'
           });
         }
         if(val.mobile === values.mobile){
@@ -42,21 +46,32 @@ class Home extends React.Component {
           containsError=true;
           throw new SubmissionError({
             mobile: 'Phone number already Registered',
-            _error: 'Registration Failed!'
+            _error: 'Oh snap! Change a few things up and try submitting again.!'
           });
         }
       }) 
         if(!containsError) { 
           this.props.submitForm(values);
           this.props.updateInitial(values);
+          this.props.showDetails();
           console.log(store.getState());
           }
       
     }
   }
 
+  hideDetails=()=>{
+    this.props.hideDetails();
+    console.log(store.getState());
+  }
+
   render() {
-    return <UserForm initialValues={this.props.initialValues} onSubmit={this.submit} />
+    return (
+    <div>
+      <UserModal show={this.props.userDetails} onHide={this.hideDetails} initialValues={this.props.initialValues}/>
+      <UserForm disableButton={this.props.userDetails} initialValues={this.props.initialValues} onSubmit={this.submit} />
+    </div>
+    );
   }
 }
 

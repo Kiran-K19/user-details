@@ -11,3 +11,15 @@ export function submitForm(values) {
           values
       }
   }
+
+  export function showDetails(){
+      return{
+          type:'SHOW_DETAILS'
+      }
+  }
+
+  export function hideDetails(){
+    return{
+        type:'HIDE_DETAILS'
+    }
+}
