@@ -1,5 +1,7 @@
+import { persistStore } from 'redux-persist'
 import { createStore} from 'redux';
 import rootReducer from './reducers/index';
+
 
 const INITIAL_STATE = {
     userDetails: false,
@@ -10,9 +12,12 @@ const INITIAL_STATE = {
     },
     user: [],
     form: {}
-}
+};
 
-const store = createStore(rootReducer,INITIAL_STATE);
-console.log(store.getState());
 
-export default store;
+export default function configureStore () {
+    let store = createStore(rootReducer,INITIAL_STATE);
+    let persistor = persistStore(store);
+  
+    return { persistor, store }
+  };

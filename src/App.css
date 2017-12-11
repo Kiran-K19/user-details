@@ -6,7 +6,7 @@
   font-size: 1.5em;
 }
 
-input[type=text] {
+/* input[type=text] {
 	font-size:36px;
     width: 100%;
     padding: 12px 20px;
@@ -14,8 +14,15 @@ input[type=text] {
     border-left:0px;
     border-right:0px;
     border-top:0px;
-    outline-style: none; 
-}
+    outline-style: none; } */
+
+    .form-control {
+      height: 60px;
+      font-size: 36px;
+    }
+
+    
+
 
 
 

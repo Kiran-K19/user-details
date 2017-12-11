@@ -1,5 +1,11 @@
-import { combineReducers} from 'redux';
 import {reducer as formReducer } from 'redux-form';
+import { persistCombineReducers } from 'redux-persist'
+import storage from 'redux-persist/es/storage'
+
+const config = {
+    key: 'root',
+    storage,
+  };
 
 const userDetails = (state=false,action)=>{
     switch(action.type){
@@ -32,7 +38,7 @@ const user = (state=[],action)=>{
 
 }
 
-const rootReducer = combineReducers({
+const rootReducer = persistCombineReducers(config,{
     userDetails,
     initialValues,
     user,

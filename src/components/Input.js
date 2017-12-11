@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Input extends React.Component{
 
   componentDidUpdate(prevProps) {
@@ -9,18 +8,14 @@ class Input extends React.Component{
     }
 }
 
-  handleKeyPress=(value)=>{
-    console.log(value);
-  }
-
     render(){
 const {type, label, input, meta:{error}} = this.props
 return(
     <div>
     <label>{label}</label>
-      <input {...input} type={type}  ref={input => (this.input = input)}/>
+   <div  className={error?"form-group has-error":"form-group has-success"}> <input className="form-control" {...input} type={type}  ref={input => (this.input = input)}/></div>
       {error &&
-       <div className="alert alert-warning" role="alert">{error}</div>}
+       <div className="alert alert-warning">{error}</div>}
     </div>
   );
 }
